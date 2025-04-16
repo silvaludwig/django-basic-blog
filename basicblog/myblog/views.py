@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 # def home(request):
 #     return render(request, 'home.html', {})
 
+
 class HomeView(ListView):  # Home page
     model = Post
     template_name = 'home.html'
