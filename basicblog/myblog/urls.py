@@ -1,6 +1,7 @@
 # from . import views
 from django.urls import path
 from .views import HomeView, ArticleDetailView, AddPostView, ContactView, UpdatePostView, DeletePostView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     # path('', views.home, name="home"),
@@ -10,4 +11,5 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name="contact"),
     path('article/edit/<int:pk>', UpdatePostView.as_view(), name="update_post"),
     path('article/<int:pk>/delete/', DeletePostView.as_view(), name="delete_post"),
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
