@@ -1,71 +1,90 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-      {% block title%}
-        My Blog
-      {% endblock%}
-    </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title%} My Blog {% endblock%}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'home' %}">My Blog</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-              </li>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">My Blog</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+            </li>
 
-              {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'category' %}"
+                >Post Categories</a
+              >
+            </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{% url 'add_post' %}">Add Post</a>
-                </li>
+            {% if user.is_authenticated %}
 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{% url 'add_category' %}">Add Category</a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
+            </li>
 
-                <li class="nav-item">
-                  <form class="nav-link" method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button class="nav-link p-0 border-0" style="background:none; color:inherit" type="submit">Logout</button>
-                  </form>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_category' %}"
+                >Add Category</a
+              >
+            </li>
 
-              {% else %}
+            <li class="nav-item">
+              <form class="nav-link" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button
+                  class="nav-link p-0 border-0"
+                  style="background: none; color: inherit"
+                  type="submit"
+                >
+                  Logout
+                </button>
+              </form>
+            </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{% url 'register' %}">Register</a>
-                </li>
+            {% else %}
 
-                <li class="nav-item">
-                  <a class="nav-link" href= "{% url 'login' %}">Login</a>
-                </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
 
-              {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
 
-
-            </ul>
-
-          </div>
+            {% endif %}
+          </ul>
         </div>
-      </nav>
-<br/>
-<div class="container">    
-    {% block content%}
+      </div>
+    </nav>
+    <br />
+    <div class="container">{% block content%} {% endblock %}</div>
 
-    {% endblock %}
-</div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

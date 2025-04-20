@@ -1,19 +1,17 @@
-{% extends "base.html" %}
-{% block title %} {{ post.title_tag }} {% endblock %}
-
+{% extends "base.html" %} {% block title %} {{ post.title_tag }} {% endblock %}
 {% block content%}
 
-    <h1>{{ post.title }}</h1>
-    <small>By: {{ post.author.first_name }} in {{post.post_date}}</small><br/>
-    <hr>
-    <br/>
-    {{ post.body }}
+<h1>{{ post.title }}</h1>
+<small>By: {{ post.author.first_name }} in {{post.post_date}}</small><br />
+<hr />
+<br />
+{{ post.body }}
 
-    <br/><br/>
-    <div>
-        <a href="{% url 'home' %}"class="btn btn-secondary">Home</a>
-        <a href="{% url 'update_post' post.pk %}"class="btn btn-secondary">Update</a>
-        <a href="{% url 'delete_post' post.pk %}"class="btn btn-secondary">Delete</a>
-    </div>
+<br /><br />
+<div>
+  <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+  <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Update</a>
+  <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary">Delete</a>
+</div>
 
 {% endblock %}
